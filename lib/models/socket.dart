@@ -8,39 +8,36 @@ import 'package:chess_socket/models/message.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart';
 
 class ClientSocket {
-  Socket socket;
+  Socket? _socket;
   ChessBoardController controller;
   StreamController<bool> streamController;
   Stream<bool> get enableBoardStream => streamController.stream;
 
   ClientSocket(
-    this.socket,
     this.controller,
-  ) : streamController = StreamController() {
-    socket.listen(jsonParser, onDone: finishedHandler, onError: errorHandler);
-    streamController.add(false);
-  }
+  ) : streamController = StreamController();
 
   void createGame(String fen, int gameNumber, bool isWhite) {
-    socket.write(
+    _socket?.write(
         Message(fen, MessageType.create, gameNumber, isWhite).toString());
   }
 
   void joinGame(String fen, int gameNumber, bool isWhite) {
-    socket
-        .write(Message(fen, MessageType.join, gameNumber, isWhite).toString());
+    _socket
+        ?.write(Message(fen, MessageType.join, gameNumber, isWhite).toString());
   }
 
   void makeMove(String fen, int gameNumber, bool isWhite) {
     print('make move $fen');
     streamController.add(false);
-    socket
-        .write(Message(fen, MessageType.move, gameNumber, isWhite).toString());
+    _socket
+        ?.write(Message(fen, MessageType.move, gameNumber, isWhite).toString());
   }
 
   void quitGame(int gameNumber, bool isWhite) {
-    socket.write(Message('', MessageType.quit, gameNumber, isWhite).toString());
-    socket.close();
+    _socket
+        ?.write(Message('', MessageType.quit, gameNumber, isWhite).toString());
+    _socket?.close();
   }
 
   void jsonParser(Uint8List data) {
@@ -70,11 +67,17 @@ class ClientSocket {
 
   void errorHandler(error) {
     print(error);
-    socket.close();
+    _socket?.close();
   }
 
   void finishedHandler() {
     print('Disconnected');
-    socket.close();
+    _socket?.close();
+  }
+
+  void setSocket(Socket socket) {
+    this._socket = socket;
+    _socket!.listen(jsonParser, onDone: finishedHandler, onError: errorHandler);
+    streamController.add(false);
   }
 }

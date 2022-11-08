@@ -2,7 +2,9 @@
 
 import 'package:chess_socket/main.dart';
 import 'package:chess_socket/models/socket.dart';
+import 'package:chess_socket/views/chess_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chess_board/flutter_chess_board.dart';
 import 'package:provider/provider.dart';
 
 class CreateJoin extends StatefulWidget {
@@ -28,8 +30,9 @@ class _CreateJoinState extends State<CreateJoin> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const MyHomePage(
-                                  title: "Chess", isWhite: true)))
+                            builder: (context) =>
+                                ChessPage(title: "Chess", isWhite: true),
+                          ))
                     },
                 child: const Text('Create')),
             TextButton(
@@ -41,8 +44,9 @@ class _CreateJoinState extends State<CreateJoin> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const MyHomePage(
-                                  title: "Chess", isWhite: false)))
+                            builder: (context) =>
+                                const ChessPage(title: "Chess", isWhite: false),
+                          ))
                     },
                 child: Text("Join"))
           ],
