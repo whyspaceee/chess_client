@@ -43,6 +43,7 @@ dependencies:
   equatable: ^2.0.5
   regexed_validator: ^2.0.0+1
   flutter_svg: ^1.1.6
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -62,7 +63,7 @@ dev_dependencies:
 flutter:
   assets: 
     - assets/king.svg
-
+    - assets/piece.svg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -12,7 +12,7 @@ class CustomBoard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: StreamBuilder(
-          stream: context.watch<ClientSocket>().enableBoardStream,
+          stream: context.read<ClientSocket>().enableBoardStream,
           builder: ((context, AsyncSnapshot<bool> snapshot) {
             if (snapshot.hasData) {
               return ChessBoard(

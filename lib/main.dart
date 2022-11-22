@@ -3,10 +3,12 @@
 import 'dart:io';
 
 import 'package:chess_socket/models/socket.dart';
-import 'package:chess_socket/views/connect.dart';
-import 'package:chess_socket/views/create_join.dart';
+import 'package:chess_socket/scheme/color_schemes.g.dart';
+import 'package:chess_socket/views/connect/connect.dart';
+import 'package:chess_socket/views/createjoin/create_join.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chess_board/flutter_chess_board.dart' as chess;
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -23,7 +25,9 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
             useMaterial3: true,
-            colorScheme: ColorScheme.fromSeed(seedColor: Color(0x34364C))),
+            colorScheme: lightColorScheme,
+            textTheme: GoogleFonts.robotoCondensedTextTheme()),
+        darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
         home: const ConnectToIP(),
       ),
     );

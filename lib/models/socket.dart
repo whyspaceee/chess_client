@@ -11,7 +11,8 @@ class ClientSocket {
   Socket? _socket;
   ChessBoardController controller;
   StreamController<bool> streamController;
-  Stream<bool> get enableBoardStream => streamController.stream;
+  Stream<bool> get enableBoardStream =>
+      streamController.stream.asBroadcastStream();
 
   ClientSocket(
     this.controller,
