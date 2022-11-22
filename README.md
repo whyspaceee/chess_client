@@ -1,5 +1,9 @@
 # 2Chess Client
 Socket programming chess client made for Computer Systems and Networking final project
+
+# Downloads
+[Mobile](https://github.com/whyspaceee/chess_client/releases/download/v1.0.0/Multiplayer-Chess.apk), [Windows](https://github.com/whyspaceee/chess_client/releases/download/v1.0.0/2Chess.zip)
+
 # How to run
 You can download the precompiled apk or exe,
 or you can run the program if you have flutter installed.
@@ -26,5 +30,5 @@ Run the project using flutter run
 
 
 
-Downloads: [Mobile](https://github.com/whyspaceee/chess_client/releases/download/v1.0.0/Multiplayer-Chess.apk).
+
 
